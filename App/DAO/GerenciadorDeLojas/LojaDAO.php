@@ -33,4 +33,28 @@ class LojaDAO extends Connect {
             'endereco' => $loja->getEndereco()
         ]);
     }
+
+    public function update(LojaModel $loja): void {
+        $statement = $this->pdo
+            ->prepare('UPDATE loja SET
+                nome = :nome,
+                telefone = :telefone,
+                endereco = :endereco
+                WHERE id = :id;
+            ');
+        $statement->execute([
+            'nome' => $loja->getNome(),
+            'telefone' => $loja->getTelefone(),
+            'endereco' => $loja->getEndereco(),
+            'id' => $loja->getId()
+        ]);
+    }
+
+    public function delete(int $id): void {
+        $statement = $this->pdo
+            ->prepare('DELETE FROM produto WHERE loja_id = :id;
+                DELETE FROM loja WHERE id = :id;
+            ');
+        $statement->execute([ 'id' => $id ]);
+    }
 }

@@ -23,6 +23,10 @@ final class LojaModel {
     public function getId(): int {
         return $this->id;
     }
+    public function setId(int $id): LojaModel {
+        $this->id = $id;
+        return $this;
+    }
 
     public function getNome(): string {
         return $this->nome;
@@ -41,7 +45,7 @@ final class LojaModel {
     }
 
     public function getEndereco(): string {
-        return $this->nome;
+        return $this->endereco;
     }
     public function setEndereco(string $endereco): LojaModel {
         $this->endereco = $endereco;

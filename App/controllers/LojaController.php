@@ -33,10 +33,34 @@ final class LojaController {
     }
     
     public function updateLoja(Request $request, Response $response, array $args): Response {
+        $data = $request->getParsedBody();
+
+        $lojaDAO = new LojaDAO();
+        $loja = new LojaModel();
+        $loja->setId((int)$data['id'])
+             ->setNome($data['nome'])
+             ->setTelefone($data['telefone'])
+             ->setEndereco($data['endereco']);
+        $lojaDAO->update($loja);
+
+        $payload = json_encode([
+            'message' => 'Loja atualizada com sucesso'
+        ]);
+        $response->getBody()->write($payload);
+
         return $response;
     }
     
     public function deleteLoja(Request $request, Response $response, array $args): Response {
+        $queryParams = $request->getQueryParams();
+        
+        $lojaDAO = new LojaDAO();
+        $id = (int)$queryParams['id'];
+        $lojaDAO->delete($id);
+
+        $payload = json_encode([ 'message' => 'Loja deletada com sucesso!' ]);
+        $response->getBody()->write($payload);
+
         return $response;
     }
 
