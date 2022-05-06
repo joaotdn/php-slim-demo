@@ -4,7 +4,22 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 require_once "../vendor/autoload.php";
 
-$app = new \Slim\App();
+$md01 = function(Request $request, Response $response, $next) : Response {
+    $response->getBody()->write("EXEC md1<br>");
+    $response = $next($request, $response);
+    $response->getBody()->write("<br>EXEC md2");
+
+    return $response;
+};
+
+$configuration = [
+    'settings' => [
+        'displayErrorDetails' => true
+    ],
+];
+$configuration = new \Slim\Container($configuration);
+
+$app = new \Slim\App($configuration);
 
 $app->get('/produto[/nome]', function(Request $request, Response $response, array $args) {
     // Caso o limite seja nulo, o valor padrão será 10
@@ -13,7 +28,7 @@ $app->get('/produto[/nome]', function(Request $request, Response $response, arra
 
     return $response->getBody()
         ->write("{$limit} produtos do banco de dados com o nome {$nome}");
-});
+})->add($md01);
 
 $app->post('/produto', function(Request $request, Response $response, array $args) {
     $data = $request->getParsedBody();
