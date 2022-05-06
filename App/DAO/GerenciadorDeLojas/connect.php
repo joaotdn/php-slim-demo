@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DAO\SlimFramework;
+namespace App\DAO\GerenciadorDeLojas;
 
 abstract class Connect {
     /**
