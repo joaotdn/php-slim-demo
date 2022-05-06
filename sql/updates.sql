@@ -1,4 +1,4 @@
-UPDATE produtos
+UPDATE produto
 SET
 	nome = 'mouse',
     quantidade = 100

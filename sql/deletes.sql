@@ -1,2 +1,2 @@
-DELETE FROM produtos
+DELETE FROM produto
 WHERE nome = 'mouse';

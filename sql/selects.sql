@@ -1,17 +1,17 @@
 SELECT *
-FROM lojas;
+FROM loja;
 
 SELECT *
-FROM produtos;
+FROM produto;
 
 SELECT
-	lojas.nome as loja,
-    produtos.nome as produto,
-    produtos.preco as preco,
-    produtos.quantidade as quantidade
-FROM produtos
-INNER JOIN lojas ON produtos.loja_id = lojas.id
+	loja.nome as loja,
+    produto.nome as produto,
+    produto.preco as preco,
+    produto.quantidade as quantidade
+FROM produto
+INNER JOIN loja ON produto.loja_id = loja.id
 WHERE
-	produtos.nome = 'teclado'
-ORDER BY produtos.nome
+	produto.nome = 'teclado'
+ORDER BY produto.nome
 ;
