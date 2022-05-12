@@ -19,6 +19,15 @@ class LojaDAO extends Connect {
         return $lojas;
     }
 
+    public function getById(int $id): int {
+        $loja = $this->pdo
+            ->query('SELECT id FROM loja WHERE id = :id);')
+            ->fetch();
+        $loja->execute(['id' => $id]);
+
+        return $loja;
+    }
+
     public function add(LojaModel $loja): void {
         $statement = $this->pdo
             ->prepare('INSERT INTO loja VALUES(
@@ -55,6 +64,8 @@ class LojaDAO extends Connect {
             ->prepare('DELETE FROM produto WHERE loja_id = :id;
                 DELETE FROM loja WHERE id = :id;
             ');
-        $statement->execute([ 'id' => $id ]);
+        $statement->execute([
+            'id' => $id
+        ]);
     }
 }
