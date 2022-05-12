@@ -16,9 +16,8 @@ final class ProdutoModel {
     public function getLojaId(): int {
         return $this->loja_id;
     }
-    public function setLojaId(int $loja_id): ProdutoModel {
+    public function setLojaId(int $loja_id) {
         $this->$loja_id = $loja_id;
-        return $this;
     }
 
     public function getNome(): string {
