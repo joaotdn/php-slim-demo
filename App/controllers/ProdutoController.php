@@ -20,12 +20,11 @@ final class ProdutoController {
         $data = $request->getParsedBody();
 
         $produto = new ProdutoModel();
-        $produto->setNome($data['nome'])
+        $produtoDAO = new ProdutoDAO();
+        $produto->setLoja($data['loja_id'])
+                ->setNome($data['nome'])
                 ->setQuantidade($data['quantidade'])
                 ->setPreco($data['preco']);
-        $produto->setLojaId((int)$data['loja_id']);
-        
-        $produtoDAO = new ProdutoDAO();
         $produtoDAO->add($produto);
         
         $payload = json_encode([ 'message' => 'Produto inserido com sucesso!' ]);
