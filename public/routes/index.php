@@ -5,12 +5,17 @@ use function src\{
     basicAuth
 };
 
-use App\controllers\LojaController;
-use App\controllers\ProdutoController;
+use App\controllers\{
+    AuthController,
+    LojaController,
+    ProdutoController
+};
 
 $app = new \Slim\App(slimConfiguration());
 
 // ==============================================
+
+$app->post('/login', AuthController::class, ':login');
 
 $app->group('', function() use ($app) {
     $app->get('/loja', LojaController::class . ':getLojas');
