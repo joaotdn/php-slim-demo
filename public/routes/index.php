@@ -15,7 +15,7 @@ $app = new \Slim\App(slimConfiguration());
 
 // ==============================================
 
-$app->post('/login', AuthController::class, ':login');
+$app->post('/login', AuthController::class . ':login');
 
 $app->group('', function() use ($app) {
     $app->get('/loja', LojaController::class . ':getLojas');
