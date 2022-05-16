@@ -2,11 +2,11 @@
 
 ## Checklist
 
-* [*] Add database tables
+* [x] Add database tables
 * [ ] Add login route
-    * [*] Verify if exists email
-    * [*] Verify if correct password
-    * [*] Construct token
+    * [x] Verify if exists email
+    * [x] Verify if correct password
+    * [x] Construct token
     * [] Save token on database
     * [] Return token from user
 * [ ] Validade routes
