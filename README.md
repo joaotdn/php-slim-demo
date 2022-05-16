@@ -7,7 +7,7 @@
     * [x] Verify if exists email
     * [x] Verify if correct password
     * [x] Construct token
-    * [] Save token on database
-    * [] Return token from user
+    * [ ] Save token on database
+    * [ ] Return token from user
 * [ ] Validade routes
 * [ ] Add refresh_token route
