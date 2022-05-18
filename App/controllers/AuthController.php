@@ -30,7 +30,9 @@ final class AuthController {
                             ->format('Y-m-d H:i:s')
         ];
         $token = JWT::encode($tokenPayload, getenv('JWT_SECRET'));
-        
+        $refreshTokenPayload = ['email' => $user->getEmail()];
+        $refreshToken = JWT::encode($refreshTokenPayload, getenv('JWT_SECRET'));
+
         return $response;
     }
 
